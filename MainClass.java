@@ -20,6 +20,7 @@ public class MainClass {
 			String[] move=line[1].split(" ");
 			System.out.println(move[0]+"-"+move[1]);
 			//game.makeMove(move[0], move[1]);
+			System.out.println(Constants.KNIGHT.name);
 		}
 	}
 
