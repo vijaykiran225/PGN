@@ -52,23 +52,22 @@ public class ChessGame {
 		//nf3 qb6
 		int whitePieceIndex = findRightPieceForMove(whiteMove,whitePieces);
 		ChessPiece wpiece=whitePieces.get(whitePieceIndex);
-		wpiece.moveTo(whiteMove);
+		wpiece.moveTo(whiteMove.substring(1));
 		
 
 		System.out.println(wpiece);
 		int blackPieceIndex = findRightPieceForMove(blackMove,blackPieces);
 		ChessPiece bpiece=whitePieces.get(whitePieceIndex);
-		bpiece.moveTo(blackMove);	
+		bpiece.moveTo(blackMove.substring(1));	
 		
 		System.out.println(bpiece);
 	}
 	
 	private int findRightPieceForMove(String move,ArrayList<ChessPiece> listOfPieces) {
-		int indexes[] = null;
 		String notation = move.substring(0, 1);
-		indexes = retriveIndexes(listOfPieces,notation);
+		int indexes[] = retriveIndexes(listOfPieces,notation);
 		int index = 0;
-		while ( listOfPieces.get(index).isValidMove(move.substring(1, move.length())) ) {
+		while ( !listOfPieces.get(indexes[index]).isValidMove(move.substring(1, move.length())) ) {
 			index++;
 		}
 		return index;
@@ -88,7 +87,8 @@ public class ChessGame {
 			
 			if(listOfPieces.get(i).getName().equals(name))
 			{
-				indexes[k]=i;k++;
+				indexes[k]=i;
+				k++;
 			}
 			
 		}
