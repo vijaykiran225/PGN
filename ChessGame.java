@@ -100,6 +100,15 @@ public class ChessGame {
 
 	public void displayCurrentStatus() {
 
+		System.out.println("Black pieces status");
+		for (ChessPiece chessPiece : blackPieces) {
+			System.out.println(chessPiece);
+		}
+		System.out.println("White pieces status");
+		for (ChessPiece chessPiece : whitePieces) {
+			System.out.println(chessPiece);
+		}
+		
 	}
 
 }
