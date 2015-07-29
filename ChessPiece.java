@@ -37,5 +37,8 @@ public class ChessPiece {
 	}
 	public String getColor() {
 		return color;
-	}	
+	}
+	public boolean isValidMove(String move) {
+		return true;
+	}
 }
