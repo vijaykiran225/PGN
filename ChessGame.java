@@ -52,17 +52,43 @@ public class ChessGame {
 
 	public void makeMove(String whiteMove, String blackMove) {
 		// nf3 qb6
+		if(whiteMove.equals(Constants.KING_SIDE_CASTLING.name) ||whiteMove.equals(Constants.QUEEN_SIDE_CASTLING.name))
+		{
+			whitePieces=makeCastling(whiteMove,whitePieces);
+		}
+		else{
 		int whitePieceIndex = findRightPieceForMove(whiteMove, whitePieces);
 		ChessPiece wpiece = whitePieces.get(whitePieceIndex);
 		wpiece.moveTo(whiteMove.substring(1));
 
 		System.out.println(wpiece);
+		}
+		if(blackMove.equals(Constants.KING_SIDE_CASTLING.name)|| blackMove.equals(Constants.QUEEN_SIDE_CASTLING.name))
+		{
+			blackPieces=makeCastling(blackMove,blackPieces);
+		}else{
 		int blackPieceIndex = findRightPieceForMove(blackMove, blackPieces);
 		ChessPiece bpiece = blackPieces.get(blackPieceIndex);
 		bpiece.moveTo(blackMove.substring(1));
 
 		System.out.println(bpiece);
+		}
 	}
+
+	private ArrayList<ChessPiece> makeCastling(String blackMove, ArrayList<ChessPiece> Pieces) {
+		// TODO Auto-generated method stub
+		ChessPiece king=null;
+		ChessPiece queen = null;
+		ChessPiece rook=null;
+		for (ChessPiece chessPiece : Pieces) {
+			if(chessPiece.getName().equals(Constants.KING.name)){
+				
+			}
+		}
+		return Pieces;
+	}
+
+	
 
 	private int findRightPieceForMove(String move, ArrayList<ChessPiece> listOfPieces) {
 		String notation = move.substring(0, 1);

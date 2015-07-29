@@ -8,7 +8,9 @@ public enum Constants {
 	 ROOK("R"),
 	PAWN("P"),
 	BLACK("black"),
-	WHITE ("white");
+	WHITE ("white"),
+	QUEEN_SIDE_CASTLING("O-O-O"),
+	KING_SIDE_CASTLING("O-O");
 	
 	String name;
 	private Constants(String x) {
