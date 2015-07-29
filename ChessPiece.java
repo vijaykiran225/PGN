@@ -14,6 +14,7 @@ public class ChessPiece {
 		this.isCaptured = false;
 		this.color = color;
 	}
+	
 	@Override
 	public String toString() {
 		return "ChessPiece [name=" + name + ", currentPosition=" + currentPosition + ", isCaptured=" + isCaptured
@@ -22,14 +23,8 @@ public class ChessPiece {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public String getCurrentPosition() {
 		return currentPosition;
-	}
-	public void setCurrentPosition(String currentPosition) {
-		this.currentPosition = currentPosition;
 	}
 	public boolean isCaptured() {
 		return isCaptured;
@@ -39,9 +34,5 @@ public class ChessPiece {
 	}
 	public String getColor() {
 		return color;
-	}
-	public void setColor(String color) {
-		this.color = color;
-	}
-	
+	}	
 }
