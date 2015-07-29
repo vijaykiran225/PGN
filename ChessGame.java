@@ -55,20 +55,50 @@ public class ChessGame {
 	}
 	
 	public void makeMove(String whiteMove,String blackMove) {
+		//nf3 qb6
+		int whitePieceIndex = findRightPieceForMove(whiteMove,whitePieces);
+		ChessPiece wpiece=whitePieces.get(whitePieceIndex);
+		wpiece.moveTo(whiteMove);
 		
-		ChessPiece whitePiece = findRightPieceForMove(whiteMove);
-		whitePiece.moveTo(whiteMove);
-		ChessPiece blackPiece = findRightPieceForMove(blackMove);
-		blackPiece.moveTo(blackMove);	
+		System.out.println(wpiece);
+		int blackPieceIndex = findRightPieceForMove(blackMove,blackPieces);
+		ChessPiece bpiece=whitePieces.get(whitePieceIndex);
+		bpiece.moveTo(blackMove);	
+		
+		System.out.println(bpiece);
 	}
 	
-	private ChessPiece findRightPieceForMove(String move) {
-		//String[] notations = {"R","N","B","K","Q"};
+	private int findRightPieceForMove(String move,ArrayList<ChessPiece> listOfPieces) {
+		int indexes[] = null;
 		String notation = move.substring(0, 1);
-		if (notation.equals(ROOK)) {
+		indexes = retriveIndexes(listOfPieces,notation);
+		int index = 0;
+		while ( listOfPieces.get(index).isValidMove(move.substring(1, move.length())) ) {
+			index++;
+		}
+		return index;
+	}
+	private int[] retriveIndexes(ArrayList<ChessPiece> listOfPieces, String name) {
+		
+		int count = 0;
+		for (ChessPiece chessPiece : listOfPieces) {
+			if(chessPiece.getName().equals(name))
+			{
+				count++;
+			}
+		}
+		int[] indexes=new int[count];
+		int k=0;
+		for (int i = 0; i < listOfPieces.size(); i++) {
+			
+			if(listOfPieces.get(i).getName().equals(name))
+			{
+				indexes[k]=i;k++;
+			}
 			
 		}
-		return null;
+		
+		return indexes;
 	}
 	public void displayCurrentStatus() {
 		
