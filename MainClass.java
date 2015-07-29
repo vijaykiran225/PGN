@@ -46,7 +46,7 @@ public class MainClass {
 			moves = removeCheck(moves);
 			
 			System.out.println(moves[0]+"-"+moves[1] );
-			// game.makeMove(fixPawnPiece(move[0]), fixPawnPiece(move[1]));
+			 game.makeMove(moves[0],moves[1]);
 		}
 	}
 
