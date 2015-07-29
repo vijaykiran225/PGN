@@ -6,7 +6,9 @@ public enum Constants {
 	BISHOP("B"),
 	KNIGHT("N"),
 	 ROOK("R"),
-	PAWN("P");
+	PAWN("P"),
+	BLACK("black"),
+	WHITE ("white");
 	
 	String name;
 	private Constants(String x) {

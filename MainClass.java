@@ -7,6 +7,20 @@ import java.io.IOException;
 
 public class MainClass {
 
+	public static String fixPawnPiece(String move)
+	{
+		char firstChar=move.charAt(0);
+		
+		if(firstChar=='a' ||firstChar=='b'
+				||firstChar=='h' ||firstChar=='c'
+				||firstChar=='e' ||firstChar=='d' 
+				||firstChar=='f' ||firstChar=='g')
+		{
+			move="P"+move;
+		}
+		return move;
+		
+	}
 	
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
@@ -20,7 +34,9 @@ public class MainClass {
 			String[] move=line[1].split(" ");
 			System.out.println(move[0]+"-"+move[1]);
 			//game.makeMove(move[0], move[1]);
-			System.out.println(Constants.KNIGHT.name);
+			System.out.println(fixPawnPiece(move[0]));
+			System.out.println(fixPawnPiece(move[1]));
+			
 		}
 	}
 
