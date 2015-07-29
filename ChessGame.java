@@ -157,7 +157,7 @@ public class ChessGame {
 
 		int count = 0;
 		for (ChessPiece chessPiece : chessPieces) {
-			if (chessPiece.getName().equals(name) && chessPiece.getColor().equals(color) && !chessPiece.isCaptured()) {
+			if (chessPiece.getName().equals(name) && chessPiece.getColor().equals(color) && !chessPiece.isNotCaptured()) {
 				count++;
 			}
 		}
@@ -165,7 +165,7 @@ public class ChessGame {
 		int k = 0;
 		for (int i = 0; i < chessPieces.size(); i++) {
 
-			if (chessPieces.get(i).getName().equals(name) && chessPieces.get(i).getColor().equals(color) && !chessPieces.get(i).isCaptured()) {
+			if (chessPieces.get(i).getName().equals(name) && chessPieces.get(i).getColor().equals(color) && !chessPieces.get(i).isNotCaptured()) {
 				indexes[k] = i;
 				k++;
 			}
