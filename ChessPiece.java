@@ -32,8 +32,8 @@ public class ChessPiece {
 	public boolean isCaptured() {
 		return isCaptured;
 	}
-	public void setCaptured(boolean isCaptured) {
-		this.isCaptured = isCaptured;
+	public void captured() {
+		this.isCaptured = true;
 	}
 	public String getColor() {
 		return color;
