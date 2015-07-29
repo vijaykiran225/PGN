@@ -53,6 +53,14 @@ public class ChessPiece {
 			String[] current_x_y_position = this.currentPosition.split("");
 			String[] new_x_y_position = move.split("");
 			isValid = (current_x_y_position[0] == new_x_y_position[0]) || (current_x_y_position[1] == new_x_y_position[1]);
+		} else if (this.name == "N") {
+			String[] current_x_y_position = this.currentPosition.split("");
+			String[] new_x_y_position = move.split("");
+			isValid = ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0)) == 2) && (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0)) == 1)) || ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0)) == 2) && (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0)) == 1));
+		} else if (this.name == "B") {
+			String[] current_x_y_position = this.currentPosition.split("");
+			String[] new_x_y_position = move.split("");
+			isValid = ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0))) == (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0))));
 		}
 		return isValid;
 	}
