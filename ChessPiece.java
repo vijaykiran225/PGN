@@ -43,19 +43,18 @@ public class ChessPiece {
 	}
 	public boolean isValidMove(String move) {
 		boolean isValid = false;
-		if (this.name == "P") {
+		if (this.name.equals("P")) {
 			if (move.contains("x")) {
 				if (move.charAt(0) == currentPosition.charAt(0)) {
 					if (this.color == "white") {
-						isValid = move.substring(1).equals((char)(this.currentPosition.charAt(0) + 1) + "" + (char)(this.currentPosition.charAt(1) + 1));
-						isValid |= move.substring(1).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) + 1));
+						isValid = move.substring(2).equals((char)(this.currentPosition.charAt(0) + 1) + "" + (char)(this.currentPosition.charAt(1) + 1));
+						isValid |= move.substring(2).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) + 1));
 					} else {
-						isValid = move.substring(1).equals((char)(this.currentPosition.charAt(0) + 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
-						isValid |= move.substring(1).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
+						isValid = move.substring(2).equals((char)(this.currentPosition.charAt(0) + 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
+						isValid |= move.substring(2).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
 					}
 				}
-			} 
-			if (this.color == "white") {
+			}else if (this.color == "white") {
 					isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 1));
 				if (this.currentPosition.contains("2")) {
 					isValid |= move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 2));
@@ -66,21 +65,27 @@ public class ChessPiece {
 					isValid |= move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 2));
 				}
 			}
-		} else if (this.name == "R") {
+		} else if (this.name.equals("R")) {
 			String[] current_x_y_position = this.currentPosition.split("");
 			String[] new_x_y_position = move.split("");
-			isValid = (current_x_y_position[0] == new_x_y_position[0]) || (current_x_y_position[1] == new_x_y_position[1]);
-		} else if (this.name == "N") {
+			if(move.length() < 3) {				
+				isValid = (current_x_y_position[0].equals(new_x_y_position[0]) || current_x_y_position[1].equals(new_x_y_position[1]));
+			} else {
+				if (move.charAt(0) == currentPosition.charAt(0)) {
+					isValid = (current_x_y_position[0].equals(new_x_y_position[0]) || current_x_y_position[1].equals(new_x_y_position[1]));
+				}
+			}
+		} else if (this.name.equals("N")) {
 			String[] current_x_y_position = this.currentPosition.split("");
 			String[] new_x_y_position = move.split("");
 			isValid = ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0)) == 2) && (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0)) == 1)) 
 					|| ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0)) == 1) && (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0)) == 2));
-		} else if (this.name == "B") {
+		} else if (this.name.equals("B")) {
 			String[] current_x_y_position = this.currentPosition.split("");
 			String[] new_x_y_position = move.split("");
 			isValid = ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0))) == (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0))));
 		} else {
-			isValid = this.name == "Q" || this.name == "K";
+			isValid = this.name.equals("Q") || this.name.equals("K");
 		}
 		return isValid;
 	}

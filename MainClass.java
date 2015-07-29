@@ -25,7 +25,7 @@ public class MainClass {
 		for (int i = 0; i < moves.length; i++) {
 			if(moves[i].contains("+"))
 			{
-				moves[i].replace("+", "");
+				moves[i] = moves[i].replace("+", "");
 			}
 		}
 		return moves;
@@ -34,7 +34,6 @@ public class MainClass {
 
 	
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
 		BufferedReader reader = new BufferedReader(new FileReader("./src/PGN/sample.pgn"));
 		String fileContent = "";
 		ChessGame game = new ChessGame();

@@ -51,9 +51,15 @@ public class ChessGame {
 	public void makeMove(String whiteMove, String blackMove) {
 		if ( whiteMove.contains("x")) {
 			captureChessPiece(whiteMove);
+			if (!whiteMove.contains("P")) {
+				whiteMove = whiteMove.replace("x", "");
+			}
 		}
 		if ( blackMove.contains("x")) {
 			captureChessPiece(blackMove);
+			if (!blackMove.contains("P")) {
+				blackMove = blackMove.replace("x", "");
+			}
 		}
 		if (whiteMove.equals(Constants.KING_SIDE_CASTLING.name) || whiteMove.equals(Constants.QUEEN_SIDE_CASTLING.name)) {
 			chessPieces = makeCastling(whiteMove, chessPieces);
@@ -76,7 +82,7 @@ public class ChessGame {
 	}
 	private void movePieceAtIndex(int index,String move) {
 		ChessPiece piece = chessPieces.get(index);
-		piece.moveTo(move.substring(1));
+		piece.moveTo(move.substring(move.length()-2));
 		chessPieces.set(index, piece);
 		System.out.println(chessPieces.get(index));
 	}
@@ -146,7 +152,7 @@ public class ChessGame {
 		if (notation.equals(Constants.QUEEN.name) || notation.equals(Constants.KING.name)) {
 			index = 0;
 		} else {
-			while (!chessPieces.get(indexes[index]).isValidMove(move.substring(1, move.length()))) {
+			while (!chessPieces.get(indexes[index]).isValidMove(move.substring(1))) {
 				index++;
 			}
 		}
