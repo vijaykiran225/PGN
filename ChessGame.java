@@ -3,48 +3,50 @@ package PGN;
 import java.util.ArrayList;
 
 public class ChessGame {
+	
+	 
 	ArrayList<ChessPiece> whitePieces;
 	ArrayList<ChessPiece> blackPieces;
 	
 	private void initializeChessPieces() {
-		whitePieces.add(new ChessPiece("P","a2","white"));
-		whitePieces.add(new ChessPiece("P","b2","white"));
-		whitePieces.add(new ChessPiece("P","c2","white"));
-		whitePieces.add(new ChessPiece("P","d2","white"));
-		whitePieces.add(new ChessPiece("P","e2","white"));
-		whitePieces.add(new ChessPiece("P","f2","white"));
-		whitePieces.add(new ChessPiece("P","g2","white"));
-		whitePieces.add(new ChessPiece("P","h2","white"));
-		whitePieces.add(new ChessPiece("R","a1","white"));
-		whitePieces.add(new ChessPiece("N","b1","white"));
-		whitePieces.add(new ChessPiece("B","c1","white"));
-		whitePieces.add(new ChessPiece("Q","d1","white"));
-		whitePieces.add(new ChessPiece("K","e1","white"));
-		whitePieces.add(new ChessPiece("B","f1","white"));
-		whitePieces.add(new ChessPiece("N","g1","white"));
-		whitePieces.add(new ChessPiece("R","h1","white"));
+		whitePieces.add(new ChessPiece(Constants.PAWN.name,"a2",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.PAWN.name,"b2",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.PAWN.name,"c2",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.PAWN.name,"d2",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.PAWN.name,"e2",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.PAWN.name,"f2",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.PAWN.name,"g2",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.PAWN.name,"h2",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.ROOK.name,"a1",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.KNIGHT.name,"b1",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.BISHOP.name,"c1",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.QUEEN.name,"d1",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.KING.name,"e1",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.BISHOP.name,"f1",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.KNIGHT.name,"g1",Constants.WHITE.name));
+		whitePieces.add(new ChessPiece(Constants.ROOK.name,"h1",Constants.WHITE.name));
 		
-		blackPieces.add(new ChessPiece("P","a7","black"));
-		blackPieces.add(new ChessPiece("P","b7","black"));
-		blackPieces.add(new ChessPiece("P","c7","black"));
-		blackPieces.add(new ChessPiece("P","d7","black"));
-		blackPieces.add(new ChessPiece("P","e7","black"));
-		blackPieces.add(new ChessPiece("P","f7","black"));
-		blackPieces.add(new ChessPiece("P","g7","black"));
-		blackPieces.add(new ChessPiece("P","h7","black"));
-		blackPieces.add(new ChessPiece("R","a8","black"));
-		blackPieces.add(new ChessPiece("N","b8","black"));
-		blackPieces.add(new ChessPiece("B","c8","black"));
-		blackPieces.add(new ChessPiece("Q","d8","black"));
-		blackPieces.add(new ChessPiece("K","e8","black"));
-		blackPieces.add(new ChessPiece("B","f8","black"));
-		blackPieces.add(new ChessPiece("N","g8","black"));
-		blackPieces.add(new ChessPiece("R","h8","black"));
+		blackPieces.add(new ChessPiece(Constants.PAWN.name,"a7",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.PAWN.name,"b7",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.PAWN.name,"c7",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.PAWN.name,"d7",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.PAWN.name,"e7",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.PAWN.name,"f7",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.PAWN.name,"g7",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.PAWN.name,"h7",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.ROOK.name,"a8",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.KNIGHT.name,"b8",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.BISHOP.name,"c8",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.QUEEN.name,"d8",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.KING.name,"e8",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.BISHOP.name,"f8",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.KNIGHT.name,"g8",Constants.BLACK.name));
+		blackPieces.add(new ChessPiece(Constants.ROOK.name,"h8",Constants.BLACK.name));
 	}
 	public ChessGame() {
 		super();
-		this.whitePieces = new ArrayList<ChessPiece>();
-		this.blackPieces = new ArrayList<ChessPiece>();
+		whitePieces = new ArrayList<>();
+		blackPieces = new ArrayList<>();
 		initializeChessPieces();
 	}
 	
@@ -53,11 +55,15 @@ public class ChessGame {
 		ChessPiece whitePiece = findRightPieceForMove(whiteMove);
 		whitePiece.moveTo(whiteMove);
 		ChessPiece blackPiece = findRightPieceForMove(blackMove);
-		blackPiece.moveTo(blackMove);
-		
+		blackPiece.moveTo(blackMove);	
 	}
 	
-	private ChessPiece findRightPieceForMove(String whiteMove) {
+	private ChessPiece findRightPieceForMove(String move) {
+		//String[] notations = {"R","N","B","K","Q"};
+		String notation = move.substring(0, 1);
+		if (notation.equals(Constants.ROOK.name)) {
+			
+		}
 		return null;
 	}
 	public void displayCurrentStatus() {
