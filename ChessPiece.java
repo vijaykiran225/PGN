@@ -44,15 +44,35 @@ public class ChessPiece {
 	public boolean isValidMove(String move) {
 		boolean isValid = false;
 		if (this.name == "P") {
-			if (this.color == "white") {
-				isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 1));
+			if (move.contains("x")) {
+				if (move.charAt(0) == currentPosition.charAt(0)) {
+					if (this.color == "white") {
+						isValid = move.substring(1).equals((char)(this.currentPosition.charAt(0) + 1) + "" + (char)(this.currentPosition.charAt(1) + 1));
+						isValid |= move.substring(1).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) + 1));
+					} else {
+						isValid = move.substring(1).equals((char)(this.currentPosition.charAt(0) + 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
+						isValid |= move.substring(1).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
+					}
+				}
 			} else {
-				isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 1));
+				if (this.color == "white") {
+					isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 1));
+				} else {
+					isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 1));
+				}
 			}
 		} else if (this.name == "R") {
 			String[] current_x_y_position = this.currentPosition.split("");
 			String[] new_x_y_position = move.split("");
 			isValid = (current_x_y_position[0] == new_x_y_position[0]) || (current_x_y_position[1] == new_x_y_position[1]);
+		} else if (this.name == "N") {
+			String[] current_x_y_position = this.currentPosition.split("");
+			String[] new_x_y_position = move.split("");
+			isValid = ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0)) == 2) && (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0)) == 1)) || ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0)) == 2) && (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0)) == 1));
+		} else if (this.name == "B") {
+			String[] current_x_y_position = this.currentPosition.split("");
+			String[] new_x_y_position = move.split("");
+			isValid = ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0))) == (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0))));
 		}
 		return isValid;
 	}
