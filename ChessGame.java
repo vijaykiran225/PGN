@@ -41,12 +41,17 @@ public class ChessGame {
 		blackPieces.add(new ChessPiece("N","g8","black"));
 		blackPieces.add(new ChessPiece("R","h8","black"));
 	}
-	public ChessGame(ArrayList<ChessPiece> whitePieces, ArrayList<ChessPiece> blackPieces) {
+	public ChessGame() {
 		super();
 		initializeChessPieces();
 	}
 	
 	public void makeMove(String whiteMove,String blackMove) {
+		
+		ChessPiece whitePiece = findRightPieceForMove(whiteMove);
+		whitePiece.moveTo(whiteMove);
+		ChessPiece blackPiece = findRightPieceForMove(blackMove);
+		blackPiece.moveTo(blackMove);
 		
 	}
 	
