@@ -54,17 +54,16 @@ public class ChessPiece {
 						isValid |= move.substring(1).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
 					}
 				}
-			} else if((this.color == "white" && this.currentPosition.contains("2")) || (this.color == "black" && this.currentPosition.contains("7"))){
-				if (this.color == "white") {
+			} 
+			if (this.color == "white") {
 					isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 1));
-					if (this.currentPosition.contains("2")) {
-						isValid |= move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 2));
-					}
-				} else {
-					isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 1));
-					if (this.currentPosition.contains("7")) {
-						isValid |= move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 2));
-					}
+				if (this.currentPosition.contains("2")) {
+					isValid |= move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 2));
+				}
+			} else {
+				isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 1));
+				if (this.currentPosition.contains("7")) {
+					isValid |= move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 2));
 				}
 			}
 		} else if (this.name == "R") {
@@ -74,7 +73,8 @@ public class ChessPiece {
 		} else if (this.name == "N") {
 			String[] current_x_y_position = this.currentPosition.split("");
 			String[] new_x_y_position = move.split("");
-			isValid = ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0)) == 2) && (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0)) == 1)) || ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0)) == 2) && (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0)) == 1));
+			isValid = ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0)) == 2) && (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0)) == 1)) 
+					|| ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0)) == 1) && (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0)) == 2));
 		} else if (this.name == "B") {
 			String[] current_x_y_position = this.currentPosition.split("");
 			String[] new_x_y_position = move.split("");
