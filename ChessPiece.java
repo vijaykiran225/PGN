@@ -32,8 +32,8 @@ public class ChessPiece {
 	public void moveTo(String newPosition) {
 		this.currentPosition = newPosition;
 	}
-	public boolean isCaptured() {
-		return isCaptured;
+	public boolean isNotCaptured() {
+		return !isCaptured;
 	}
 	public void captured() {
 		this.isCaptured = true;
