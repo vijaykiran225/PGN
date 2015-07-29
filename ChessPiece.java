@@ -54,11 +54,17 @@ public class ChessPiece {
 						isValid |= move.substring(1).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
 					}
 				}
-			} else {
+			} else if((this.color == "white" && this.currentPosition.contains("2")) || (this.color == "black" && this.currentPosition.contains("7"))){
 				if (this.color == "white") {
 					isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 1));
+					if (this.currentPosition.contains("2")) {
+						isValid |= move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 2));
+					}
 				} else {
 					isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 1));
+					if (this.currentPosition.contains("7")) {
+						isValid |= move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 2));
+					}
 				}
 			}
 		} else if (this.name == "R") {
