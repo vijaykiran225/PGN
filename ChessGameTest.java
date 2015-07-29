@@ -14,7 +14,7 @@ public class ChessGameTest {
 	@Test
 	public void testMakeMove() {
 		ChessGame game = new ChessGame();
-		game.makeMove("Rb1", "Rb4");
+		game.makeMove("Qb1", "Rb4");
 	}
 
 	@Test
