@@ -93,6 +93,8 @@ public class ChessGame {
 						chessPiece.moveTo("g1");
 						System.out.println(chessPiece);
 					}
+					
+					
 				}
 				if(chessPiece.getName().equals(Constants.ROOK.name)){
 					if(chessPiece.getColor().equals(Constants.BLACK.name))

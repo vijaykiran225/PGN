@@ -14,6 +14,9 @@ public class MainClassTest {
 	@Test
 	public void testFixPawnPiece()
 	{
-		System.out.println(MainClass.fixPawnPiece("Be4"));
+		String[] moves=new String[2];
+		moves[0]=new String("Be4");
+		moves[1]=new String("Nh4+");
+		System.out.println(MainClass.appendPawnPiece(moves)[1]);
 	}
 }
