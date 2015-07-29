@@ -32,8 +32,8 @@ public class ChessPiece {
 	public void moveTo(String newPosition) {
 		this.currentPosition = newPosition;
 	}
-	public boolean isCaptured() {
-		return isCaptured;
+	public boolean isNotCaptured() {
+		return !isCaptured;
 	}
 	public void captured() {
 		this.isCaptured = true;
@@ -73,6 +73,8 @@ public class ChessPiece {
 			String[] current_x_y_position = this.currentPosition.split("");
 			String[] new_x_y_position = move.split("");
 			isValid = ((Math.abs(current_x_y_position[0].charAt(0) - new_x_y_position[0].charAt(0))) == (Math.abs(current_x_y_position[1].charAt(0) - new_x_y_position[1].charAt(0))));
+		} else {
+			isValid = this.name == "Q" || this.name == "K";
 		}
 		return isValid;
 	}
