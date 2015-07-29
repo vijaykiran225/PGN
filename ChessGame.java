@@ -78,7 +78,7 @@ public class ChessGame {
 		ChessPiece piece = chessPieces.get(index);
 		piece.moveTo(move.substring(1));
 		chessPieces.set(index, piece);
-		System.out.println(piece);
+		System.out.println(chessPieces.get(index));
 	}
 	private ArrayList<ChessPiece> makeCastling(String Move, ArrayList<ChessPiece> Pieces) {
 
@@ -144,7 +144,7 @@ public class ChessGame {
 		int indexes[] = retriveIndexes(notation, color);
 		int index = 0;
 		if (notation.equals(Constants.QUEEN.name) || notation.equals(Constants.KING.name)) {
-			index = indexes[0];
+			index = 0;
 		} else {
 			while (!chessPieces.get(indexes[index]).isValidMove(move.substring(1, move.length()))) {
 				index++;
