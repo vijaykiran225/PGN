@@ -1,5 +1,8 @@
 package PGN;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChessPiece {
 	private String name;
 	private String currentPosition;
@@ -39,6 +42,18 @@ public class ChessPiece {
 		return color;
 	}
 	public boolean isValidMove(String move) {
-		return true;
+		boolean isValid = false;
+		if (this.name == "P") {
+			if (this.color == "white") {
+				isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 1));
+			} else {
+				isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 1));
+			}
+		} else if (this.name == "R") {
+			String[] current_x_y_position = this.currentPosition.split("");
+			String[] new_x_y_position = move.split("");
+			isValid = (current_x_y_position[0] == new_x_y_position[0]) || (current_x_y_position[1] == new_x_y_position[1]);
+		}
+		return isValid;
 	}
 }
