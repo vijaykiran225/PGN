@@ -75,14 +75,65 @@ public class ChessGame {
 		}
 	}
 
-	private ArrayList<ChessPiece> makeCastling(String blackMove, ArrayList<ChessPiece> Pieces) {
+	
+	private ArrayList<ChessPiece> makeCastling(String Move, ArrayList<ChessPiece> Pieces) {
 		// TODO Auto-generated method stub
-		ChessPiece king=null;
-		ChessPiece queen = null;
-		ChessPiece rook=null;
-		for (ChessPiece chessPiece : Pieces) {
-			if(chessPiece.getName().equals(Constants.KING.name)){
-				
+
+		if(Move.equals(Constants.KING_SIDE_CASTLING.name))
+		{
+			for (ChessPiece chessPiece : Pieces) {
+				if(chessPiece.getName().equals(Constants.KING.name)){
+					if(chessPiece.getColor().equals(Constants.BLACK.name))
+					{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("g8");
+						System.out.println(chessPiece);
+					}else{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("g1");
+						System.out.println(chessPiece);
+					}
+				}
+				if(chessPiece.getName().equals(Constants.ROOK.name)){
+					if(chessPiece.getColor().equals(Constants.BLACK.name))
+					{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("f8");
+						System.out.println(chessPiece);
+					}else{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("f1");
+						System.out.println(chessPiece);
+					}
+				}
+			}
+		}else if(Move.equals(Constants.QUEEN_SIDE_CASTLING.name))
+		{
+			for (ChessPiece chessPiece : Pieces) {
+				if(chessPiece.getName().equals(Constants.KING.name)){
+					if(chessPiece.getColor().equals(Constants.BLACK.name))
+					{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("c8");
+						System.out.println(chessPiece);
+					}else{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("c1");
+						System.out.println(chessPiece);
+					}
+				}
+				if(chessPiece.getName().equals(Constants.ROOK.name)){
+					if(chessPiece.getColor().equals(Constants.BLACK.name))
+					{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("d8");
+						System.out.println(chessPiece);
+					}else{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("d1");
+						System.out.println(chessPiece);
+					}
+				}
 			}
 		}
 		return Pieces;
