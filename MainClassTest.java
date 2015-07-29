@@ -11,4 +11,9 @@ public class MainClassTest {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public void testFixPawnPiece()
+	{
+		System.out.println(MainClass.fixPawnPiece("Be4"));
+	}
 }

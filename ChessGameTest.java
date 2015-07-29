@@ -19,7 +19,8 @@ public class ChessGameTest {
 
 	@Test
 	public void testDisplayCurrentStatus() {
-		fail("Not yet implemented");
+		ChessGame game = new ChessGame();
+		game.displayCurrentStatus();
 	}
 
 }
