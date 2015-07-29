@@ -49,99 +49,80 @@ public class ChessGame {
 	}
 
 	public void makeMove(String whiteMove, String blackMove) {
-		if ( whiteMove.contains("x")) {
+		if (whiteMove.contains("x")) {
 			captureChessPiece(whiteMove);
 			if (!whiteMove.contains("P")) {
 				whiteMove = whiteMove.replace("x", "");
 			}
 		}
-		if ( blackMove.contains("x")) {
+		if (blackMove.contains("x")) {
 			captureChessPiece(blackMove);
 			if (!blackMove.contains("P")) {
 				blackMove = blackMove.replace("x", "");
 			}
 		}
-		if (whiteMove.equals(Constants.KING_SIDE_CASTLING.name) || whiteMove.equals(Constants.QUEEN_SIDE_CASTLING.name)) {
-			chessPieces = makeCastling(whiteMove, chessPieces);
+		if (whiteMove.equals(Constants.KING_SIDE_CASTLING.name)
+				|| whiteMove.equals(Constants.QUEEN_SIDE_CASTLING.name)) {
+			makeCastling(whiteMove, Constants.WHITE.name);
 		} else {
 			int index = findRightPieceForMove(whiteMove, Constants.WHITE.name);
-			movePieceAtIndex(index,whiteMove);
+			movePieceAtIndex(index, whiteMove);
 		}
-		if (blackMove.equals(Constants.KING_SIDE_CASTLING.name) || blackMove.equals(Constants.QUEEN_SIDE_CASTLING.name)) {
-			chessPieces = makeCastling(blackMove, chessPieces);
+		if (blackMove.equals(Constants.KING_SIDE_CASTLING.name)
+				|| blackMove.equals(Constants.QUEEN_SIDE_CASTLING.name)) {
+			makeCastling(blackMove, Constants.BLACK.name);
 		} else {
 			int index = findRightPieceForMove(blackMove, Constants.BLACK.name);
 			movePieceAtIndex(index, blackMove);
 		}
 	}
+
 	private void captureChessPiece(String move) {
-		int index = retrieveChessPieceAtPosition(move.substring(move.length()-2, move.length()));
+		int index = retrieveChessPieceAtPosition(move.substring(move.length() - 2, move.length()));
 		ChessPiece piece = chessPieces.get(index);
 		piece.captured();
 		chessPieces.set(index, piece);
 	}
-	private void movePieceAtIndex(int index,String move) {
+
+	private void movePieceAtIndex(int index, String move) {
 		ChessPiece piece = chessPieces.get(index);
-		piece.moveTo(move.substring(move.length()-2));
+		piece.moveTo(move.substring(move.length() - 2));
 		chessPieces.set(index, piece);
 		System.out.println(chessPieces.get(index));
 	}
-	private ArrayList<ChessPiece> makeCastling(String Move, ArrayList<ChessPiece> Pieces) {
 
+	private void makeCastling(String Move, String color) {
+
+		int rookIndex;
+		int kingIndex;
 		if (Move.equals(Constants.KING_SIDE_CASTLING.name)) {
-			for (ChessPiece chessPiece : Pieces) {
-				if (chessPiece.getName().equals(Constants.KING.name)) {
-					if (chessPiece.getColor().equals(Constants.BLACK.name)) {
-						// System.out.println(chessPiece);
-						chessPiece.moveTo("g8");
-						System.out.println(chessPiece);
-					} else {
-						// System.out.println(chessPiece);
-						chessPiece.moveTo("g1");
-						System.out.println(chessPiece);
-					}
-					
-					
-				}
-				if (chessPiece.getName().equals(Constants.ROOK.name)) {
-					if (chessPiece.getColor().equals(Constants.BLACK.name)) {
-						// System.out.println(chessPiece);
-						chessPiece.moveTo("f8");
-						System.out.println(chessPiece);
-					} else {
-						// System.out.println(chessPiece);
-						chessPiece.moveTo("f1");
-						System.out.println(chessPiece);
-					}
-				}
+			if (color.equals(Constants.WHITE.name)) {
+
+				rookIndex = retrieveChessPieceAtPosition("h1");
+				kingIndex = retrieveChessPieceAtPosition("e1");
+				movePieceAtIndex(rookIndex, "f1");
+				movePieceAtIndex(kingIndex, "g1");
+			} else {
+				rookIndex = retrieveChessPieceAtPosition("h8");
+				kingIndex = retrieveChessPieceAtPosition("e8");
+				movePieceAtIndex(rookIndex, "f8");
+				movePieceAtIndex(kingIndex, "g8");
 			}
-		} else if (Move.equals(Constants.QUEEN_SIDE_CASTLING.name)) {
-			for (ChessPiece chessPiece : Pieces) {
-				if (chessPiece.getName().equals(Constants.KING.name)) {
-					if (chessPiece.getColor().equals(Constants.BLACK.name)) {
-						// System.out.println(chessPiece);
-						chessPiece.moveTo("c8");
-						System.out.println(chessPiece);
-					} else {
-						// System.out.println(chessPiece);
-						chessPiece.moveTo("c1");
-						System.out.println(chessPiece);
-					}
-				}
-				if (chessPiece.getName().equals(Constants.ROOK.name)) {
-					if (chessPiece.getColor().equals(Constants.BLACK.name)) {
-						// System.out.println(chessPiece);
-						chessPiece.moveTo("d8");
-						System.out.println(chessPiece);
-					} else {
-						// System.out.println(chessPiece);
-						chessPiece.moveTo("d1");
-						System.out.println(chessPiece);
-					}
-				}
+
+		} else {
+			if (color.equals(Constants.WHITE.name)) {
+
+				rookIndex = retrieveChessPieceAtPosition("a1");
+				kingIndex = retrieveChessPieceAtPosition("e1");
+				movePieceAtIndex(rookIndex, "d1");
+				movePieceAtIndex(kingIndex, "c1");
+			} else {
+				rookIndex = retrieveChessPieceAtPosition("a8");
+				kingIndex = retrieveChessPieceAtPosition("e8");
+				movePieceAtIndex(rookIndex, "d8");
+				movePieceAtIndex(kingIndex, "c8");
 			}
 		}
-		return Pieces;
 	}
 
 	private int findRightPieceForMove(String move, String color) {
@@ -164,7 +145,8 @@ public class ChessGame {
 		int count = 0;
 		for (ChessPiece chessPiece : chessPieces) {
 
-			if (chessPiece.getName().equals(name) && chessPiece.getColor().equals(color) && chessPiece.isNotCaptured()) {
+			if (chessPiece.getName().equals(name) && chessPiece.getColor().equals(color)
+					&& chessPiece.isNotCaptured()) {
 
 				count++;
 			}
@@ -173,7 +155,8 @@ public class ChessGame {
 		int k = 0;
 		for (int i = 0; i < chessPieces.size(); i++) {
 
-			if (chessPieces.get(i).getName().equals(name) && chessPieces.get(i).getColor().equals(color) && chessPieces.get(i).isNotCaptured()) {
+			if (chessPieces.get(i).getName().equals(name) && chessPieces.get(i).getColor().equals(color)
+					&& chessPieces.get(i).isNotCaptured()) {
 
 				indexes[k] = i;
 				k++;
