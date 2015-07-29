@@ -14,7 +14,11 @@ public class ChessGameTest {
 	@Test
 	public void testMakeMove() {
 		ChessGame game = new ChessGame();
+
+		System.out.println("castling attempt 1");
 		game.makeMove("O-O", "O-O-O");
+		System.out.println("castling attempt 2");
+		game.makeMove("O-O-O", "O-O");
 	}
 
 	@Test
