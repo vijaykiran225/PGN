@@ -26,7 +26,7 @@ public class ChessPiece {
 	public String getCurrentPosition() {
 		return currentPosition;
 	}
-	public void setCurrentPosition(String newPosition) {
+	public void moveTo(String newPosition) {
 		this.currentPosition = newPosition;
 	}
 	public boolean isCaptured() {
