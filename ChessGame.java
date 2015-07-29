@@ -52,17 +52,94 @@ public class ChessGame {
 
 	public void makeMove(String whiteMove, String blackMove) {
 		// nf3 qb6
+		if(whiteMove.equals(Constants.KING_SIDE_CASTLING.name) ||whiteMove.equals(Constants.QUEEN_SIDE_CASTLING.name))
+		{
+			whitePieces=makeCastling(whiteMove,whitePieces);
+		}
+		else{
 		int whitePieceIndex = findRightPieceForMove(whiteMove, whitePieces);
 		ChessPiece wpiece = whitePieces.get(whitePieceIndex);
 		wpiece.moveTo(whiteMove.substring(1));
 
 		System.out.println(wpiece);
+		}
+		if(blackMove.equals(Constants.KING_SIDE_CASTLING.name)|| blackMove.equals(Constants.QUEEN_SIDE_CASTLING.name))
+		{
+			blackPieces=makeCastling(blackMove,blackPieces);
+		}else{
 		int blackPieceIndex = findRightPieceForMove(blackMove, blackPieces);
 		ChessPiece bpiece = blackPieces.get(blackPieceIndex);
 		bpiece.moveTo(blackMove.substring(1));
 
 		System.out.println(bpiece);
+		}
 	}
+
+	
+	private ArrayList<ChessPiece> makeCastling(String Move, ArrayList<ChessPiece> Pieces) {
+		// TODO Auto-generated method stub
+
+		if(Move.equals(Constants.KING_SIDE_CASTLING.name))
+		{
+			for (ChessPiece chessPiece : Pieces) {
+				if(chessPiece.getName().equals(Constants.KING.name)){
+					if(chessPiece.getColor().equals(Constants.BLACK.name))
+					{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("g8");
+						System.out.println(chessPiece);
+					}else{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("g1");
+						System.out.println(chessPiece);
+					}
+				}
+				if(chessPiece.getName().equals(Constants.ROOK.name)){
+					if(chessPiece.getColor().equals(Constants.BLACK.name))
+					{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("f8");
+						System.out.println(chessPiece);
+					}else{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("f1");
+						System.out.println(chessPiece);
+					}
+				}
+			}
+		}else if(Move.equals(Constants.QUEEN_SIDE_CASTLING.name))
+		{
+			for (ChessPiece chessPiece : Pieces) {
+				if(chessPiece.getName().equals(Constants.KING.name)){
+					if(chessPiece.getColor().equals(Constants.BLACK.name))
+					{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("c8");
+						System.out.println(chessPiece);
+					}else{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("c1");
+						System.out.println(chessPiece);
+					}
+				}
+				if(chessPiece.getName().equals(Constants.ROOK.name)){
+					if(chessPiece.getColor().equals(Constants.BLACK.name))
+					{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("d8");
+						System.out.println(chessPiece);
+					}else{
+//						System.out.println(chessPiece);
+						chessPiece.moveTo("d1");
+						System.out.println(chessPiece);
+					}
+				}
+			}
+		}
+		return Pieces;
+	}
+
+	
 
 	private int findRightPieceForMove(String move, ArrayList<ChessPiece> listOfPieces) {
 		String notation = move.substring(0, 1);

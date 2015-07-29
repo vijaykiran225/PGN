@@ -32,10 +32,9 @@ public class MainClass {
 			//System.out.println(fileContent);
 			String[] line=fileContent.split("\\.");
 			String[] move=line[1].split(" ");
-			System.out.println(move[0]+"-"+move[1]);
+			//System.out.println(move[0]+"-"+move[1]);
 			//game.makeMove(move[0], move[1]);
-			System.out.println(fixPawnPiece(move[0]));
-			System.out.println(fixPawnPiece(move[1]));
+			System.out.println(fixPawnPiece(move[0])+" - "+fixPawnPiece(move[1]));
 			
 		}
 	}
