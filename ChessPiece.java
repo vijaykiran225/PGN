@@ -44,10 +44,22 @@ public class ChessPiece {
 	public boolean isValidMove(String move) {
 		boolean isValid = false;
 		if (this.name == "P") {
-			if (this.color == "white") {
-				isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 1));
+			if (move.contains("x")) {
+				if (move.charAt(0) == currentPosition.charAt(0)) {
+					if (this.color == "white") {
+						isValid = move.substring(1).equals((char)(this.currentPosition.charAt(0) + 1) + "" + (char)(this.currentPosition.charAt(1) + 1));
+						isValid |= move.substring(1).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) + 1));
+					} else {
+						isValid = move.substring(1).equals((char)(this.currentPosition.charAt(0) + 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
+						isValid |= move.substring(1).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
+					}
+				}
 			} else {
-				isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 1));
+				if (this.color == "white") {
+					isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 1));
+				} else {
+					isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) - 1));
+				}
 			}
 		} else if (this.name == "R") {
 			String[] current_x_y_position = this.currentPosition.split("");
