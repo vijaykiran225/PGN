@@ -43,6 +43,8 @@ public class ChessGame {
 	}
 	public ChessGame() {
 		super();
+		whitePieces = new ArrayList<>();
+		blackPieces = new ArrayList<>();
 		initializeChessPieces();
 	}
 	
@@ -51,10 +53,17 @@ public class ChessGame {
 		ChessPiece whitePiece = findRightPieceForMove(whiteMove);
 		whitePiece.moveTo(whiteMove);
 		ChessPiece blackPiece = findRightPieceForMove(blackMove);
-		blackPiece.moveTo(blackMove);
-		
+		blackPiece.moveTo(blackMove);	
 	}
 	
+	private ChessPiece findRightPieceForMove(String move) {
+		//String[] notations = {"R","N","B","K","Q"};
+		String notation = move.substring(0, 1);
+		if (notation.equals("R")) {
+			
+		}
+		return null;
+	}
 	public void displayCurrentStatus() {
 		
 	}
