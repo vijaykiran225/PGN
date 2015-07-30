@@ -128,25 +128,26 @@ public class ChessGame {
 	private int findRightPieceForMove(String move, String color) {
 
 		String notation = move.substring(0, 1);
-		int indexes[] = retriveIndexes(notation, color);
+		int indicesOfPieces[] = retriveIndexes(notation, color);
 		int index = 0;
 		if (notation.equals(Constants.QUEEN.name) || notation.equals(Constants.KING.name)) {
 			index = 0;
 		} else {
-			
-			while (!chessPieces.get(indexes[index]).isValidMove(move.substring(1))) {
+			while (!chessPieces.get(indicesOfPieces[index]).isValidMove(move.substring(1))) {
 				index++;
 			}
-			if (notation.equals(Constants.ROOK.name) && index == indexes.length) {
-				System.out.println("rab1 check");
-				index = checkForObstacles(indexes, move.substring(move.length() - 2));
-				return indexes[index];
+			if (notation.equals(Constants.ROOK.name)) {
+				if (indicesOfPieces.length==2 && (chessPieces.get(indicesOfPieces[0]).isValidMove(move.substring(1)))
+						&& (chessPieces.get(indicesOfPieces[1]).isValidMove(move.substring(1)))) {
+					index = retrievePieceIndexWithoutObstacles(indicesOfPieces, move.substring(move.length() - 2));
+					return indicesOfPieces[index];
+				}
 			}
 		}
-		return indexes[index];
+		return indicesOfPieces[index];
 	}
 
-	private int checkForObstacles(int[] indexes, String target) {
+	private int retrievePieceIndexWithoutObstacles(int[] indexes, String target) {
 		// TODO Auto-generated method stub
 		int i = 0;
 		for (i = 0; i < indexes.length; i++) {
