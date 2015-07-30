@@ -46,7 +46,7 @@ public class ChessPiece {
 		if (this.name.equals("P")) {
 			if (move.contains("x")) {
 				if (move.charAt(0) == currentPosition.charAt(0)) {
-					if (this.color == "white") {
+					if (this.color.equals("white")) {
 						isValid = move.substring(2).equals((char)(this.currentPosition.charAt(0) + 1) + "" + (char)(this.currentPosition.charAt(1) + 1));
 						isValid |= move.substring(2).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) + 1));
 					} else {
@@ -54,7 +54,7 @@ public class ChessPiece {
 						isValid |= move.substring(2).equals((char)(this.currentPosition.charAt(0) - 1) + "" + (char)(this.currentPosition.charAt(1) - 1));
 					}
 				}
-			}else if (this.color == "white") {
+			}else if (this.color.equals("white")) {
 					isValid = move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 1));
 				if (this.currentPosition.contains("2")) {
 					isValid |= move.equals(this.currentPosition.charAt(0) + "" + (char)(this.currentPosition.charAt(1) + 2));
@@ -68,11 +68,13 @@ public class ChessPiece {
 		} else if (this.name.equals("R")) {
 			String[] current_x_y_position = this.currentPosition.split("");
 			String[] new_x_y_position = move.split("");
+			System.out.println(currentPosition);
+			System.out.println(move);
 			if(move.length() < 3) {				
 				isValid = (current_x_y_position[0].equals(new_x_y_position[0]) || current_x_y_position[1].equals(new_x_y_position[1]));
 			} else {
-				if (move.charAt(0) == currentPosition.charAt(0)) {
-					isValid = (current_x_y_position[0].equals(new_x_y_position[0]) || current_x_y_position[1].equals(new_x_y_position[1]));
+				if (current_x_y_position[0].equals(new_x_y_position[0])) {
+					isValid = (current_x_y_position[0].equals(new_x_y_position[1]) || current_x_y_position[1].equals(new_x_y_position[2]));
 				}
 			}
 		} else if (this.name.equals("N")) {
