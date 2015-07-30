@@ -10,7 +10,10 @@ public enum Constants {
 	BLACK("black"),
 	WHITE ("white"),
 	QUEEN_SIDE_CASTLING("O-O-O"),
-	KING_SIDE_CASTLING("O-O");
+	KING_SIDE_CASTLING("O-O"),
+	CAPTURE("x"),
+	WHITE_START("2"),
+	BLACK_START("7");
 	
 	String name;
 	private Constants(String x) {

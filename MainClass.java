@@ -47,6 +47,7 @@ public class MainClass {
 			System.out.println(moves[0]+"-"+moves[1] );
 			 game.makeMove(moves[0],moves[1]);
 		}
+		reader.close();
 	}
 
 }
