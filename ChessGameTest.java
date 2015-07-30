@@ -26,5 +26,7 @@ public class ChessGameTest {
 		ChessGame game = new ChessGame();
 		game.displayCurrentStatus();
 	}
+	
+	
 
 }

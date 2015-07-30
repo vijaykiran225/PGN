@@ -72,7 +72,7 @@ public class ChessPiece {
 				isValid = (current_x_y_position[0].equals(new_x_y_position[0]) || current_x_y_position[1].equals(new_x_y_position[1]));
 			} else {
 				if (move.charAt(0) == currentPosition.charAt(0)) {
-					isValid = (current_x_y_position[0].equals(new_x_y_position[0]) || current_x_y_position[1].equals(new_x_y_position[1]));
+					isValid = (current_x_y_position[0].equals(new_x_y_position[1]) || current_x_y_position[1].equals(new_x_y_position[2]));
 				}
 			}
 		} else if (this.name.equals("N")) {

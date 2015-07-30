@@ -109,7 +109,7 @@ public class ChessGame {
 				movePieceAtIndex(kingIndex, "g8");
 			}
 
-		} else {
+		} else if (Move.equals(Constants.QUEEN_SIDE_CASTLING.name)) {
 			if (color.equals(Constants.WHITE.name)) {
 
 				rookIndex = retrieveChessPieceAtPosition("a1");
@@ -133,11 +133,61 @@ public class ChessGame {
 		if (notation.equals(Constants.QUEEN.name) || notation.equals(Constants.KING.name)) {
 			index = 0;
 		} else {
+			
 			while (!chessPieces.get(indexes[index]).isValidMove(move.substring(1))) {
 				index++;
 			}
+			if (notation.equals(Constants.ROOK.name) && index == indexes.length) {
+				System.out.println("rab1 check");
+				index = checkForObstacles(indexes, move.substring(move.length() - 2));
+				return indexes[index];
+			}
 		}
 		return indexes[index];
+	}
+
+	private int checkForObstacles(int[] indexes, String target) {
+		// TODO Auto-generated method stub
+		int i = 0;
+		for (i = 0; i < indexes.length; i++) {
+			String position = chessPieces.get(i).getCurrentPosition();
+			if (!checkForObstaclesInBetween(position, target)) {
+				break;
+			}
+		}
+		return i;
+	}
+
+	private boolean checkForObstaclesInBetween(String position, String target) {
+
+		if (position.compareTo(target) > 0) {
+			String temp = position;
+			position = target;
+			target = temp;
+		}
+		if (position.charAt(0) == target.charAt(0)) {
+			char firstLetter = position.charAt(0);
+			char secondLetter = position.charAt(1);
+			while (secondLetter != target.charAt(1)) {
+				secondLetter++;
+				String newPos = firstLetter + "" + secondLetter;
+				if (retrieveChessPieceAtPosition(newPos) != -1) {
+					return true;
+				}
+			}
+		} else {
+			char firstLetter = position.charAt(0);
+			char secondLetter = position.charAt(1);
+			while (firstLetter != target.charAt(0)) {
+				firstLetter++;
+				String newPos = firstLetter + "" + secondLetter;
+				if (retrieveChessPieceAtPosition(newPos) != -1) {
+					return true;
+				}
+			}
+		}
+		return false;
+
 	}
 
 	private int[] retriveIndexes(String name, String color) {
@@ -167,9 +217,13 @@ public class ChessGame {
 
 	private int retrieveChessPieceAtPosition(String position) {
 		int index = 0;
-		while (!chessPieces.get(index).getCurrentPosition().equals(position)) {
+		while (index < chessPieces.size() && !chessPieces.get(index).getCurrentPosition().equals(position)) {
 			index++;
 		}
+		if (index == chessPieces.size()) {
+			return -1;
+		}
+
 		return index;
 	}
 
